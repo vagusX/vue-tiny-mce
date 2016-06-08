@@ -8,7 +8,6 @@
 
 <script>
 import Editor from '../../lib/vue-tiny-mce';
-// import {upload, getUrl} from '#/services/uploader';
 
 const config = {
   statusbar: false,
@@ -31,7 +30,7 @@ const config = {
 
 function handleUpload(e, editor) {
   const file = e.data;
-  // upload(file).then(data => e.callback(getUrl(data)));
+  // ...
 }
 
 export default {
