@@ -79,14 +79,21 @@ function isInlineTemplate(bool) {
 }
 
 const MCE_VUE = Vue.extend({
-  props: ['id', 'className', 'config', 'content', 'events', 'changeCallback'],
+  props: {
+    id: String,
+    className: String,
+    config: Object,
+    events: Object,
+    content: String,
+    onChange: Function
+  },
   data() {
     return {
       _isInit: false,
       _editor: {}
     }
   },
-  template: isInlineTemplate(true),
+  template: '<textarea id={{id}} class={{className}} />',
   methods: {
     _init(config, content) {
       const _config = Object.assign({}, defaultConfig, config);
@@ -109,12 +116,17 @@ const MCE_VUE = Vue.extend({
           this._editor = editor;
           content && editor.setContent(content);
         });
-        editor.on('change', () => {
-          // Set to `null` to mark a change in content
-          this.content = null;
-          // If `changeCallback` is provided, update cached content
-          this.changeCallback && this.changeCallback(this.content = editor.getContent());
-        });
+
+        // listen to change Event and respond
+        editor.on('ExecCommand change NodeChange ObjectResized', () => {
+          if (editor.isDirty()) {
+            editor.save();
+            let content = editor.getContent().trim();
+            this.onChange && this.onChange(editor.getContent().trim());
+            console.log(content);
+          }
+        })
+
         config.setup && config.setup(editor);
       };
 

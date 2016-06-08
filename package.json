@@ -1,14 +1,14 @@
 {
   "name": "vue-tiny-mce",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
+  "version": "0.0.1",
+  "description": "TinyMCE editor in vue",
   "author": "vagusX <vagusxl@gmail.com>",
   "private": true,
+  "main": "./lib/vue-tiny-mce.js",
   "scripts": {
-    "build:editor": "rimraf lib && node node_modules/.bin/webpack --progress --hide-modules --config webpack.config.js",
+    "build": "rimraf lib && node node_modules/.bin/webpack --progress --hide-modules --config webpack.config.js",
     "dev": "node build/dev-server.js",
-    "build": "node build/build.js",
-    "test": ""
+    "build:demo": "node build/build.js"
   },
   "dependencies": {
     "babel-runtime": "^6.0.0",

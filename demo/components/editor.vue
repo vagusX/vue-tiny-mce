@@ -3,11 +3,11 @@
     :config="config"
     :events="events"
     :content="content"
-    :change-callback="changeCallback"></editor>
+    :on-change="onChange"></editor>
 </template>
 
 <script>
-import Editor from '../../lib/editor';
+import Editor from '../../lib/vue-tiny-mce';
 // import {upload, getUrl} from '#/services/uploader';
 
 const config = {
@@ -38,7 +38,10 @@ export default {
   components: {
     Editor
   },
-  props: ['content', 'changeCallback'],
+  props: {
+    content: String,
+    onChange: Function
+  },
   data() {
     return {
       config: config,

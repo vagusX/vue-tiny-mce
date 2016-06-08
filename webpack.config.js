@@ -1,19 +1,19 @@
 const path = require('path');
 
 module.exports = {
-  context: path.resolve(__dirname, 'editor'),
+  context: path.resolve(__dirname, 'src'),
   entry: {
     app: './index.js',
   },
   output: {
     path: 'lib',
-    filename: 'editor.js',
-    library: 'MceVuEditor',
+    filename: 'vue-tiny-mce.js',
+    library: 'VueTinyMCE',
     libraryTarget: 'commonjs2',
   },
   resolve: {
     alias: {
-      _tinymce: path.resolve(__dirname, 'editor/tinymce'),
+      _tinymce: path.resolve(__dirname, 'src/tinymce'),
     },
   },
   module: {
@@ -27,7 +27,7 @@ module.exports = {
       }, {
         test: /\.js?$/,
         loader: 'babel',
-        include: path.resolve(__dirname, 'editor')
+        include: path.resolve(__dirname, 'src')
       }, {
         test: /\.css$/,
         exclude: /\/content\.min\.css$/,

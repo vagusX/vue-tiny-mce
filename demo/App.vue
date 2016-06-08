@@ -9,8 +9,9 @@
       To get a better understanding of how this boilerplate works, check out
       <a href="http://vuejs-templates.github.io/webpack" target="_blank">its documentation</a>.
     </p>
-    <editor :content="content" :change-callback="handleContentChange"></editor>
-    <input v-model="content"></input>
+    <editor :content="content" :on-change="handleContentChange"></editor>
+    <p>字数: {{content.length}}</p>
+    <!-- <global-editor content="hello world"></global-editor> -->
   </div>
 </template>
 
@@ -21,7 +22,7 @@ import Editor from './components/editor'
 export default {
   components: {
     Hello,
-    Editor
+    Editor,
   },
   data() {
     return {
