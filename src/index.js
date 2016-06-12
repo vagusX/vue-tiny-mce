@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import {requireTheme, requireSkin, requireContentStyle, generateId} from './utils';
+import {requireTheme, requireSkin, requireContentStyle, requirePlugins, generateId} from './utils';
 import tinymce from './tinymce';
 
 // Import default theme
@@ -8,6 +8,22 @@ requireTheme();
 
 // Import default skin
 requireSkin();
+
+// Import available plugins
+requirePlugins([
+  'autoresize',
+  'code',
+  'link',
+  'paste',
+  'searchreplace'
+]);
+
+[
+  'd2s',
+  'image',
+  'autofloat',
+  'cursor',
+].forEach(plugin => require(`./plugins/${plugin}`));
 
 const defaultConfig = {
   // Import default content CSS for the corresponding skin
