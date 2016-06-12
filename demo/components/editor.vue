@@ -13,8 +13,7 @@ const config = {
   statusbar: false,
   resize: false,
   menubar: '',
-  toolbar: 'undo redo | bold removeformat image t_image',
-  plugins: 'searchreplace autoresize paste t_image t_autofloat',
+  toolbar: 'undo redo | bold removeformat',
   content_style:
     '*{line-height:25px;color:#555;font-size:15px;font-family:\'Hiragino Sans GB\',\'Microsoft YaHei\',\'黑体\',Helvetica,Arial,Tahoma,sans-serif;}' +
     'img{max-width:100%;}' +

@@ -1,6 +1,8 @@
-const path = require('path');
+var path = require('path');
+var webpack = require('webpack');
+var merge = require('webpack-merge');
 
-module.exports = {
+var devWebpackConfig = {
   context: path.resolve(__dirname, 'src'),
   entry: {
     app: './index.js',
@@ -48,3 +50,35 @@ module.exports = {
     'vue'
   ],
 };
+
+var prodWebpackConfig = merge(devWebpackConfig, {
+  output: {
+    filename: 'vue-tiny-mce.min.js',
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.MinChunkSizePlugin({
+      minChunkSize: 10000
+    }),
+    new webpack.optimize.LimitChunkCountPlugin({
+      maxChunks: 15
+    }),
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.AggressiveMergingPlugin({
+      minSizeReduce: 1.5,
+      moveToParents: true
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: true,
+      compress: {
+        warnings: false
+      }
+    })
+  ]
+})
+
+
+module.exports = [
+  devWebpackConfig,
+  prodWebpackConfig
+];

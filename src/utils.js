@@ -23,21 +23,11 @@ export function requireContentStyle(name='lightgray') {
 };
 
 /**
- * @desc Import built-in plugins for later use.
- */
-export function requirePlugins(names) {
-  if (typeof names === 'string') names = [names];
-  names.forEach(function (name) {
-    require(`tinymce/plugins/${name}/plugin`);
-  });
-};
-
-/**
  * @desc Generate a unique ID.
  */
 export const generateId = function() {
   let id = 0;
   return function () {
-    return 'tapas-editor-' + (++ id);
+    return 'vue-tinymce-' + (++ id);
   };
 }();

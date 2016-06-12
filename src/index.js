@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import {requireTheme, requireSkin, requireContentStyle, requirePlugins, generateId} from './utils';
+import {requireTheme, requireSkin, requireContentStyle, generateId} from './utils';
 import tinymce from './tinymce';
 
 // Import default theme
@@ -9,74 +9,12 @@ requireTheme();
 // Import default skin
 requireSkin();
 
-// Import available plugins
-requirePlugins([
-  'advlist',
-  'anchor',
-  'autolink',
-  'autoresize',
-  'autosave',
-  'bbcode',
-  'charmap',
-  'code',
-  'codesample',
-  'colorpicker',
-  'contextmenu',
-  'directionality',
-  'emoticons',
-  'fullpage',
-  'fullscreen',
-  'hr',
-  'image',
-  'imagetools',
-  'importcss',
-  'insertdatetime',
-  'layer',
-  'legacyoutput',
-  'link',
-  'lists',
-  'media',
-  'nonbreaking',
-  'noneditable',
-  'pagebreak',
-  'paste',
-  'preview',
-  'print',
-  'save',
-  'searchreplace',
-  'spellchecker',
-  'tabfocus',
-  'table',
-  'template',
-  'textcolor',
-  'textpattern',
-  'visualblocks',
-  'visualchars',
-  'wordcount',
-]);
-[
-  'd2s',
-  'simp-trad',
-  'image',
-  'autofloat',
-  'cursor',
-  //'markdown',
-].forEach(plugin => require(`./plugins/${plugin}`));
-
 const defaultConfig = {
   // Import default content CSS for the corresponding skin
   content_style: requireContentStyle(),
   // Avoid `skin` to be loaded from URL
   skin: false,
 };
-
-function isInlineTemplate(bool) {
-  if (bool) {
-    return '<div id={{id}} class={{className}}>{{{content}}}</div>';
-  } else {
-    return '<textarea id={{id}} class={{className}} />';
-  }
-}
 
 const MCE_VUE = Vue.extend({
   props: {
@@ -123,7 +61,6 @@ const MCE_VUE = Vue.extend({
             editor.save();
             let content = editor.getContent().trim();
             this.onChange && this.onChange(editor.getContent().trim());
-            console.log(content);
           }
         })
 

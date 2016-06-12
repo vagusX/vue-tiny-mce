@@ -1,6 +1,6 @@
 {
   "name": "vue-tiny-mce",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "TinyMCE editor in vue",
   "author": "vagusX <vagusxl@gmail.com>",
   "main": "./lib/vue-tiny-mce.js",
