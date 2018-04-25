@@ -1,5 +1,7 @@
 # vue-tiny-mce
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/vagusX/vue-tiny-mce.svg)](https://greenkeeper.io/)
+
 > A Vue.js project
 
 ## Build Setup
